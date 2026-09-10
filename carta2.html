@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brostería EL PADRINO - Carta Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #08090c;
+            --card-bg: #12141a;
+            --input-bg: #1a1d26;
+            --amber-glow: #ff9f0a;
+            --orange-fire: #ff453a;
+            --text-main: #ffffff;
+            --text-sub: #989ba5;
+            --grad-fire: linear-gradient(135deg, #ff9f0a, #ff3b30);
+            --grad-green: linear-gradient(135deg, #30d158, #248a3d);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg-dark); color: var(--text-main); padding: 15px; padding-bottom: 110px; }
+
+        /* Header con Branding */
+        header { text-align: center; margin-bottom: 20px; padding-top: 10px; }
+        .brand-subtitle { font-size: 0.7rem; color: var(--amber-glow); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+        header h1 { font-size: 2.2rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -0.5px; text-shadow: 0 0 20px rgba(255, 159, 10, 0.3); }
+        header h1 span { color: var(--amber-glow); }
+        
+        .mesa-badge { 
+            background: var(--grad-fire); 
+            color: #fff; 
+            display: inline-block; 
+            padding: 6px 20px; 
+            border-radius: 20px; 
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            margin-top: 8px;
+            box-shadow: 0 4px 15px rgba(255, 69, 58, 0.4);
+        }
+
+        /* Formulario Nombre */
+        .user-box { 
+            background: var(--card-bg); 
+            padding: 15px; 
+            border-radius: 16px; 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .user-box label { display: block; font-size: 0.8rem; color: var(--text-sub); margin-bottom: 8px; font-weight: 600; }
+        .user-box input { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border-radius: 10px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            background: var(--input-bg); 
+            color: #fff; 
+            font-size: 0.95rem; 
+            outline: none; 
+            transition: border-color 0.3s;
+        }
+        .user-box input:focus { border-color: var(--amber-glow); }
+
+        /* Titulos de Categoria */
+        .cat-title { 
+            font-size: 1.1rem; 
+            color: var(--amber-glow); 
+            margin: 25px 0 12px; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Tarjeta de Producto */
+        .product-card { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 15px; 
+            margin-bottom: 14px; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .product-header { display: flex; justify-content: space-between; align-items: center; }
+        .product-title { font-size: 1.05rem; font-weight: 700; color: #fff; }
+        .product-price { 
+            background: rgba(255, 159, 10, 0.15); 
+            color: var(--amber-glow); 
+            font-weight: 800; 
+            font-size: 1rem; 
+            padding: 4px 12px; 
+            border-radius: 20px;
+            border: 1px solid rgba(255, 159, 10, 0.3);
+        }
+
+        /* Opciones desplegables */
+        .options-box { 
+            margin-top: 12px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+            background: var(--input-bg); 
+            padding: 10px 12px; 
+            border-radius: 10px; 
+        }
+        .options-box label { font-size: 0.85rem; color: #d1d5db; display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500; }
+        .options-box input[type="radio"], .options-box input[type="checkbox"] { accent-color: var(--amber-glow); transform: scale(1.1); }
+
+        .btn-add { 
+            background: var(--grad-fire); 
+            color: #fff; 
+            border: none; 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 10px; 
+            font-weight: 800; 
+            margin-top: 12px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 69, 58, 0.3);
+            transition: transform 0.1s;
+        }
+        .btn-add:active { transform: scale(0.98); }
+
+        /* Barra Flotante */
+        .cart-bar { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background: rgba(18, 20, 26, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 -8px 25px rgba(0,0,0,0.8); 
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 99;
+        }
+        .btn-send { 
+            background: var(--grad-green); 
+            color: #fff; 
+            border: none; 
+            padding: 12px 20px; 
+            border-radius: 12px; 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(48, 209, 88, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-subtitle">🔥 BROSTERÍA 🔥</div>
+        <h1>EL <span>PADRINO</span></h1>
+        <div class="mesa-badge" id="displayMesa">MESA: Detectando...</div>
+    </header>
+
+    <!-- Datos del Cliente -->
+    <div class="user-box">
+        <label>👤 Tu Nombre (para llamarte al entregar):</label>
+        <input type="text" id="nombreCliente" placeholder="Ej: Andre">
+    </div>
+
+    <!-- SECCIÓN BROASTER -->
+    <div class="cat-title">🍗 PIEZAS BROASTER</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Pecho Broaster</span>
+            <span class="product-price">S/ 8.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_pecho" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
+            <label><input type="radio" name="opt_pecho" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarBroaster('Pecho Broaster', 8.00, 'opt_pecho')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Entrepierna Broaster</span>
+            <span class="product-price">S/ 8.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_entrepierna" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
+            <label><input type="radio" name="opt_entrepierna" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarBroaster('Entrepierna Broaster', 8.00, 'opt_entrepierna')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Alita Broaster</span>
+            <span class="product-price">S/ 7.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_alita" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
+            <label><input type="radio" name="opt_alita" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarBroaster('Alita Broaster', 7.00, 'opt_alita')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN SALCHIPAPAS -->
+    <div class="cat-title">🍟 SALCHIPAPAS & DÚOS</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Salchipapa Simple</span>
+            <span class="product-price">S/ 5.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="checkbox" id="chk_simple_chaufa"> 🍚 Añadir Chaufa (+S/ 1.00 extra)</label>
+        </div>
+        <button class="btn-add" onclick="agregarSimple()">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Salchipapa Especial</span>
+            <span class="product-price">S/ 8.00</span>
+        </div>
+        <button class="btn-add" onclick="agregarDirecto('Salchipapa Especial', 8.00)">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Salchichaufa</span>
+            <span class="product-price">S/ 9.00</span>
+        </div>
+        <button class="btn-add" onclick="agregarDirecto('Salchichaufa', 9.00)">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Salchibroaster</span>
+            <span class="product-price">S/ 12.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_salchibroaster" value="Pieza Pecho" checked> 🍗 Pecho</label>
+            <label><input type="radio" name="opt_salchibroaster" value="Pieza Entrepierna"> 🍗 Entrepierna</label>
+            <label><input type="radio" name="opt_salchibroaster" value="Pieza Alita"> 🍗 Alita</label>
+        </div>
+        <button class="btn-add" onclick="agregarBroaster('Salchibroaster', 12.00, 'opt_salchibroaster')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN GASEOSAS -->
+    <div class="cat-title">🥤 BEBIDAS</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Gaseosa Personal 600ml</span>
+            <span class="product-price">S/ 3.50</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_gas_600" value="Coca Cola" checked> Coca Cola</label>
+            <label><input type="radio" name="opt_gas_600" value="Inka Kola"> Inka Kola</label>
+        </div>
+        <button class="btn-add" onclick="agregarBroaster('Gaseosa 600ml', 3.50, 'opt_gas_600')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Gaseosa Pirañita</span>
+            <span class="product-price">S/ 1.50</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_piranita" value="Coca Cola" checked> Coca Cola</label>
+            <label><input type="radio" name="opt_piranita" value="Inka Kola"> Inka Kola</label>
+            <label><input type="radio" name="opt_piranita" value="Fanta"> Fanta</label>
+            <label><input type="radio" name="opt_piranita" value="Sprite"> Sprite</label>
+        </div>
+        <button class="btn-add" onclick="agregarBroaster('Gaseosa Pirañita', 1.50, 'opt_piranita')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- BARRA FLOTANTE -->
+    <div class="cart-bar">
+        <div>
+            <div style="font-size: 0.75rem; color: var(--text-sub); font-weight: 600;">TOTAL A PAGAR:</div>
+            <div style="font-weight: 900; font-size: 1.3rem; color: var(--amber-glow);" id="totalPrecio">S/ 0.00</div>
+        </div>
+        <button class="btn-send" onclick="enviarWhatsAppDirecto()">PEDIR Y PAGAR 🚀</button>
+    </div>
+
+    <script>
+        const MI_NUMERO_WHATSAPP = "51904375565"; 
+        let numMesa = "1";
+        let carrito = [];
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            numMesa = urlParams.get('mesa') || "1";
+            document.getElementById('displayMesa').innerText = `MESA Nº ${numMesa}`;
+        };
+
+        function agregarDirecto(nombre, precio) {
+            carrito.push({ nombre, precio, detalle: "" });
+            actualizarTotal();
+        }
+
+        function agregarBroaster(nombre, precio, radioName) {
+            const opcion = document.querySelector(`input[name="${radioName}"]:checked`).value;
+            carrito.push({ nombre, precio, detalle: opcion });
+            actualizarTotal();
+        }
+
+        function agregarSimple() {
+            const extraChaufa = document.getElementById('chk_simple_chaufa').checked;
+            let precioFinal = extraChaufa ? 6.00 : 5.00;
+            let detalle = extraChaufa ? "Con Extra Chaufa (+S/ 1.00)" : "Sin Chaufa";
+
+            carrito.push({ nombre: "Salchipapa Simple", precio: precioFinal, detalle: detalle });
+            actualizarTotal();
+        }
+
+        function actualizarTotal() {
+            const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+            document.getElementById('totalPrecio').innerText = `S/ ${total.toFixed(2)}`;
+        }
+
+        function enviarWhatsAppDirecto() {
+            const nombre = document.getElementById('nombreCliente').value.trim();
+
+            if (!nombre) {
+                alert("Por favor escribe tu nombre primero.");
+                return;
+            }
+
+            if (carrito.length === 0) {
+                alert("Selecciona al menos un producto.");
+                return;
+            }
+
+            let total = 0;
+            let msj = `🔥 *BROSTERÍA EL PADRINO* 🔥%0A`;
+            msj += `━━━━━━━━━━━━━━━━━━━━━%0A`;
+            msj += `📍 *UBICACIÓN:* MESA Nº ${numMesa}%0A`;
+            msj += `👤 *CLIENTE:* ${nombre.toUpperCase()}%0A`;
+            msj += `━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+            msj += `📋 *RESUMEN DE TU PEDIDO:*%0A`;
+
+            carrito.forEach((item, index) => {
+                let detalleTexto = item.detalle ? ` _(${item.detalle})_` : '';
+                msj += `*${index + 1}.* ${item.nombre}${detalleTexto}%0A`;
+                msj += `   └─ 💰 *S/ ${item.precio.toFixed(2)}*%0A`;
+                total += item.precio;
+            });
+
+            msj += `%0A━━━━━━━━━━━━━━━━━━━━━%0A`;
+            msj += `💵 *TOTAL A PAGAR: S/ ${total.toFixed(2)}*%0A`;
+            msj += `━━━━━━━━━━━━━━━━━━━━━%0A%0A`;
+            msj += `Por favor, envíame el QR de Yape/Plin a este chat para realizar el pago de S/ ${total.toFixed(2)} y confirmar mi pedido. ¡Gracias! 🙌`;
+
+            const url = `https://wa.me/${MI_NUMERO_WHATSAPP}?text=${msj}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
