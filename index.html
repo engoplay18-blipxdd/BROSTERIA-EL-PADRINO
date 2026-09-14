@@ -403,6 +403,7 @@
             document.getElementById('totalPrecio').innerText = `S/ ${total.toFixed(2)}`;
         }
 
+        // === AQUÍ REEMPLAZAS LA FUNCIÓN ENVIAR ===
         function enviarWhatsAppDirecto() {
             const nombre = document.getElementById('nombreCliente').value.trim();
 
@@ -419,13 +420,13 @@
             let total = 0;
             
             let lineas = [
-                "🔥 *BROSTERÍA EL PADRINO* 🔥",
+                "\u{1F525} *BROSTER\u{00CD}A EL PADRINO* \u{1F525}",
                 "━━━━━━━━━━━━━━━━━━━━━",
-                "📍 *UBICACIÓN:* MESA Nº " + numMesa,
-                "👤 *CLIENTE:* " + nombre.toUpperCase(),
+                "\u{1F424} *UBICACI\u{00D3}N:* MESA N\u{00BA} " + numMesa,
+                "\u{1F464} *CLIENTE:* " + nombre.toUpperCase(),
                 "━━━━━━━━━━━━━━━━━━━━━",
                 "",
-                "📋 *RESUMEN DE TU PEDIDO:*"
+                "\u{1F4CB} *RESUMEN DE TU PEDIDO:*"
             ];
 
             carrito.forEach((item, index) => {
@@ -437,10 +438,10 @@
 
             lineas.push("");
             lineas.push("━━━━━━━━━━━━━━━━━━━━━");
-            lineas.push("💵 *TOTAL A PAGAR: S/ " + total.toFixed(2) + "*");
+            lineas.push("\u{1F4B5} *TOTAL A PAGAR: S/ " + total.toFixed(2) + "*");
             lineas.push("━━━━━━━━━━━━━━━━━━━━━");
             lineas.push("");
-            lineas.push("Por favor, envíame el QR de Yape/Plin a este chat para realizar el pago de S/ " + total.toFixed(2) + " y confirmar mi pedido. ¡Gracias! 🙌");
+            lineas.push("Por favor, env\u{00ED}ame el QR de Yape/Plin a este chat para realizar el pago de S/ " + total.toFixed(2) + " y confirmar mi pedido. \u{00A1Gracias! \u{1F64C}");
 
             let mensajeCompleto = lineas.join("\n");
             let urlWhatsApp = "https://wa.me/" + MI_NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensajeCompleto);
