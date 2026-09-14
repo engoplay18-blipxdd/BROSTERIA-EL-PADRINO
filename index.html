@@ -2,340 +2,368 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brostería El Padrino - Carta Digital</title>
+    <title>Brostería EL PADRINO - Carta Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --bg-dark: #08090c;
+            --card-bg: #12141a;
+            --input-bg: #1a1d26;
+            --amber-glow: #ff9f0a;
+            --orange-fire: #ff453a;
+            --text-main: #ffffff;
+            --text-sub: #989ba5;
+            --grad-fire: linear-gradient(135deg, #ff9f0a, #ff3b30);
+            --grad-green: linear-gradient(135deg, #30d158, #248a3d);
         }
 
-        body {
-            background-color: #0f0f11;
-            color: #ffffff;
-            padding-bottom: 100px;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg-dark); color: var(--text-main); padding: 15px; padding-bottom: 110px; }
+
+        /* Header con Branding */
+        header { text-align: center; margin-bottom: 20px; padding-top: 10px; }
+        .brand-subtitle { font-size: 0.7rem; color: var(--amber-glow); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+        header h1 { font-size: 2.2rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -0.5px; text-shadow: 0 0 20px rgba(255, 159, 10, 0.3); }
+        header h1 span { color: var(--amber-glow); }
+        
+        .mesa-badge { 
+            background: var(--grad-fire); 
+            color: #fff; 
+            display: inline-block; 
+            padding: 6px 20px; 
+            border-radius: 20px; 
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            margin-top: 8px;
+            box-shadow: 0 4px 15px rgba(255, 69, 58, 0.4);
         }
 
-        header {
-            background: linear-gradient(135deg, #e63946, #b8001f);
-            padding: 20px 15px;
-            text-align: center;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
-            position: relative;
+        /* Formulario Nombre */
+        .user-box { 
+            background: var(--card-bg); 
+            padding: 15px; 
+            border-radius: 16px; 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
+        .user-box label { display: block; font-size: 0.8rem; color: var(--text-sub); margin-bottom: 8px; font-weight: 600; }
+        .user-box input { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border-radius: 10px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            background: var(--input-bg); 
+            color: #fff; 
+            font-size: 0.95rem; 
+            outline: none; 
+            transition: border-color 0.3s;
+        }
+        .user-box input:focus { border-color: var(--amber-glow); }
 
-        .brand-title {
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: 1px;
+        /* Títulos de Categoría */
+        .cat-title { 
+            font-size: 1.1rem; 
+            color: var(--amber-glow); 
+            margin: 25px 0 12px; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
             text-transform: uppercase;
         }
 
-        .brand-subtitle {
-            font-size: 13px;
-            color: #ffccd5;
-            margin-top: 4px;
-            font-weight: 600;
+        /* Tarjeta de Producto */
+        .product-card { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 15px; 
+            margin-bottom: 14px; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            overflow: hidden;
         }
-
-        .mesa-badge {
-            display: inline-block;
-            background-color: #000000;
-            color: #ffb703;
-            padding: 6px 16px;
+        .product-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .product-header { display: flex; justify-content: space-between; align-items: center; }
+        .product-title { font-size: 1.05rem; font-weight: 700; color: #fff; }
+        .product-price { 
+            background: rgba(255, 159, 10, 0.15); 
+            color: var(--amber-glow); 
+            font-weight: 800; 
+            font-size: 1rem; 
+            padding: 4px 12px; 
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-top: 10px;
-            border: 1px solid #ffb703;
+            border: 1px solid rgba(255, 159, 10, 0.3);
         }
 
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 15px;
+        /* Opciones desplegables */
+        .options-box { 
+            margin-top: 12px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+            background: var(--input-bg); 
+            padding: 10px 12px; 
+            border-radius: 10px; 
         }
+        .options-box label { font-size: 0.85rem; color: #d1d5db; display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500; }
+        .options-box input[type="radio"], .options-box input[type="checkbox"] { accent-color: var(--amber-glow); transform: scale(1.1); }
 
-        .client-section {
-            background: #1a1a1e;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #2a2a30;
-        }
-
-        .client-section label {
-            display: block;
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 6px;
-        }
-
-        .client-section input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background: #0f0f11;
-            color: #fff;
-            font-size: 15px;
-            outline: none;
-        }
-
-        .client-section input:focus {
-            border-color: #e63946;
-        }
-
-        .category-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #ffb703;
-            margin: 25px 0 12px 0;
-            text-transform: uppercase;
+        .btn-add { 
+            background: var(--grad-fire); 
+            color: #fff; 
+            border: none; 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 10px; 
+            font-weight: 800; 
+            margin-top: 12px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
             letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 2px solid #2a2a30;
-            padding-bottom: 6px;
+            box-shadow: 0 4px 15px rgba(255, 69, 58, 0.3);
+            transition: transform 0.1s;
         }
+        .btn-add:active { transform: scale(0.98); }
 
-        .card {
-            background: #1a1a1e;
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 12px;
-            border: 1px solid #2a2a30;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        /* Barra Flotante */
+        .cart-bar { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background: rgba(18, 20, 26, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 -8px 25px rgba(0,0,0,0.8); 
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 99;
         }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .item-name {
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .item-price {
-            font-size: 16px;
-            font-weight: 800;
-            color: #ff334b;
-        }
-
-        .options-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 4px;
-        }
-
-        .option-btn {
-            position: relative;
-        }
-
-        .option-btn input[type="radio"] {
-            display: none;
-        }
-
-        .option-btn label {
-            display: block;
-            padding: 6px 12px;
-            background: #26262c;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .option-btn input[type="radio"]:checked + label {
-            background: #e63946;
-            color: #fff;
-            border-color: #ff6b6b;
-            font-weight: bold;
-        }
-
-        .btn-add {
-            background: #2a2a30;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 6px;
-            transition: background 0.2s;
-        }
-
-        .btn-add:active {
-            background: #e63946;
-        }
-
-        .cart-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #1a1a1e;
-            padding: 15px;
-            border-top: 2px solid #e63946;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .total-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .total-label {
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        .total-amount {
-            font-size: 20px;
-            font-weight: 900;
-            color: #ffb703;
-        }
-
-        .btn-order {
-            background: #25d366;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-order:active {
-            background: #1ebd56;
+        .btn-send { 
+            background: var(--grad-green); 
+            color: #fff; 
+            border: none; 
+            padding: 12px 20px; 
+            border-radius: 12px; 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(48, 209, 88, 0.4);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="brand-title">BROSTERÍA EL PADRINO</div>
-        <div class="brand-subtitle">&#128293; EL MEJOR SABOR Y CROCANCIA &#128293;</div>
+        <div class="brand-subtitle">🔥 BROSTERÍA 🔥</div>
+        <h1>EL <span>PADRINO</span></h1>
         <div class="mesa-badge" id="displayMesa">MESA Nº 1</div>
     </header>
 
-    <div class="container">
-
-        <div class="client-section">
-            <label for="nombreCliente">&#128104; TU NOMBRE:</label>
-            <input type="text" id="nombreCliente" placeholder="Ej. Juan Pérez" autocomplete="off">
-        </div>
-
-        <!-- CATEGORÍA 1 -->
-        <div class="category-title">&#127831; PIEZAS BROASTER</div>
-
-        <div class="card">
-            <div class="card-header">
-                <span class="item-name">1 Pieza Broaster</span>
-                <span class="item-price">S/ 10.00</span>
-            </div>
-            <div class="options-group">
-                <div class="option-btn">
-                    <input type="radio" id="p1_pecho" name="opt_p1" value="Pecho" checked>
-                    <label for="p1_pecho">Pecho</label>
-                </div>
-                <div class="option-btn">
-                    <input type="radio" id="p1_pierna" name="opt_p1" value="Pierna">
-                    <label for="p1_pierna">Pierna</label>
-                </div>
-            </div>
-            <button class="btn-add" onclick="agregarOpcion('1 Pieza Broaster', 10, 'opt_p1')">+ AGREGAR AL PEDIDO</button>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <span class="item-name">2 Piezas Broaster</span>
-                <span class="item-price">S/ 18.00</span>
-            </div>
-            <div class="options-group">
-                <div class="option-btn">
-                    <input type="radio" id="p2_pecho" name="opt_p2" value="Pecho" checked>
-                    <label for="p2_pecho">Pecho</label>
-                </div>
-                <div class="option-btn">
-                    <input type="radio" id="p2_pierna" name="opt_p2" value="Pierna">
-                    <label for="p2_pierna">Pierna</label>
-                </div>
-            </div>
-            <button class="btn-add" onclick="agregarOpcion('2 Piezas Broaster', 18, 'opt_p2')">+ AGREGAR AL PEDIDO</button>
-        </div>
-
-        <!-- CATEGORÍA 2 -->
-        <div class="category-title">&#127839; MOSTROS</div>
-
-        <div class="card">
-            <div class="card-header">
-                <span class="item-name">Mostro (Chaufa + Papas + Pollo)</span>
-                <span class="item-price">S/ 16.00</span>
-            </div>
-            <div class="options-group">
-                <div class="option-btn">
-                    <input type="radio" id="m1_pecho" name="opt_m1" value="Pecho" checked>
-                    <label for="m1_pecho">Pecho</label>
-                </div>
-                <div class="option-btn">
-                    <input type="radio" id="m1_pierna" name="opt_m1" value="Pierna">
-                    <label for="m1_pierna">Pierna</label>
-                </div>
-            </div>
-            <button class="btn-add" onclick="agregarOpcion('Mostro', 16, 'opt_m1')">+ AGREGAR AL PEDIDO</button>
-        </div>
-
-        <!-- CATEGORÍA 3 -->
-        <div class="category-title">&#129380; BEBIDAS</div>
-
-        <div class="card">
-            <div class="card-header">
-                <span class="item-name">Gaseosa 500ml</span>
-                <span class="item-price">S/ 4.00</span>
-            </div>
-            <button class="btn-add" onclick="agregarDirecto('Gaseosa 500ml', 4)">+ AGREGAR AL PEDIDO</button>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <span class="item-name">Inca Kola 1.5L</span>
-                <span class="item-price">S/ 10.00</span>
-            </div>
-            <button class="btn-add" onclick="agregarDirecto('Inca Kola 1.5L', 10)">+ AGREGAR AL PEDIDO</button>
-        </div>
-
+    <!-- Datos del Cliente -->
+    <div class="user-box">
+        <label>👤 Tu Nombre (para llamarte al entregar):</label>
+        <input type="text" id="nombreCliente" placeholder="Ej: Andre">
     </div>
 
-    <!-- BARRA INFERIOR / CARRITO -->
-    <div class="cart-bar">
-        <div class="total-info">
-            <span class="total-label">TOTAL ACUMULADO</span>
-            <span class="total-amount" id="totalPrecio">S/ 0.00</span>
+    <!-- SECCIÓN BROASTER -->
+    <div class="cat-title">🍗 PIEZAS BROASTER</div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Pecho Broaster">
+        <div class="product-header">
+            <span class="product-title">Pecho Broaster</span>
+            <span class="product-price">S/ 8.00</span>
         </div>
-        <button class="btn-order" onclick="enviarWhatsAppDirecto()">ENVIAR PEDIDO &#128640;</button>
+        <div class="options-box">
+            <label><input type="radio" name="opt_pecho" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
+            <label><input type="radio" name="opt_pecho" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarOpcion('Pecho Broaster', 8.00, 'opt_pecho')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Entrepierna Broaster">
+        <div class="product-header">
+            <span class="product-title">Entrepierna Broaster</span>
+            <span class="product-price">S/ 8.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_entrepierna" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
+            <label><input type="radio" name="opt_entrepierna" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarOpcion('Entrepierna Broaster', 8.00, 'opt_entrepierna')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Alita Broaster">
+        <div class="product-header">
+            <span class="product-title">Alita Broaster</span>
+            <span class="product-price">S/ 7.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_alita" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
+            <label><input type="radio" name="opt_alita" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarOpcion('Alita Broaster', 7.00, 'opt_alita')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN SALCHIPAPAS -->
+    <div class="cat-title">🍟 SALCHIPAPAS & DÚOS</div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchipapa Simple">
+        <div class="product-header">
+            <span class="product-title">Salchipapa Simple</span>
+            <span class="product-price">S/ 5.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_salchisimple" value="Con Papa" checked> 🍟 Con Papa</label>
+            <label><input type="radio" name="opt_salchisimple" value="Con Chaufa"> 🍚 Con Chaufa</label>
+        </div>
+        <button class="btn-add" onclick="agregarOpcion('Salchipapa Simple', 5.00, 'opt_salchisimple')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchipapa Especial">
+        <div class="product-header">
+            <span class="product-title">Salchipapa Especial</span>
+            <span class="product-price">S/ 8.00</span>
+        </div>
+        <button class="btn-add" onclick="agregarDirecto('Salchipapa Especial', 8.00)">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchichaufa">
+        <div class="product-header">
+            <span class="product-title">Salchichaufa</span>
+            <span class="product-price">S/ 9.00</span>
+        </div>
+        <button class="btn-add" onclick="agregarDirecto('Salchichaufa', 9.00)">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchibroaster">
+        <div class="product-header">
+            <span class="product-title">Salchibroaster</span>
+            <span class="product-price">S/ 12.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_salchibroaster" value="Pieza Pecho" checked> 🍗 Pecho</label>
+            <label><input type="radio" name="opt_salchibroaster" value="Pieza Entrepierna"> 🍗 Entrepierna</label>
+            <label><input type="radio" name="opt_salchibroaster" value="Pieza Alita"> 🍗 Alita</label>
+        </div>
+        <button class="btn-add" onclick="agregarOpcion('Salchibroaster', 12.00, 'opt_salchibroaster')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN COCA COLA -->
+    <div class="cat-title">🔴 COCA COLA</div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Coca Cola">
+        <div class="product-header">
+            <span class="product-title">Coca Cola</span>
+            <span class="product-price">Desde S/ 2.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_cocacola" value="Pirañita (S/ 2.00)" checked> Pirañita - S/ 2.00</label>
+            <label><input type="radio" name="opt_cocacola" value="Personal (S/ 3.50)"> Personal - S/ 3.50</label>
+            <label><input type="radio" name="opt_cocacola" value="1 Litro (S/ 6.00)"> 1 Litro - S/ 6.00</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Coca Cola', 'opt_cocacola')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN INCA KOLA -->
+    <div class="cat-title">🟡 INCA KOLA</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Inca Kola</span>
+            <span class="product-price">Desde S/ 3.50</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_incakola" value="Personal 600ml (S/ 3.50)" checked> Personal 600ml - S/ 3.50</label>
+            <label><input type="radio" name="opt_incakola" value="Gordita 625ml (S/ 4.00)"> Gordita 625ml - S/ 4.00</label>
+            <label><input type="radio" name="opt_incakola" value="1 Litro (S/ 6.00)"> 1 Litro - S/ 6.00</label>
+            <label><input type="radio" name="opt_incakola" value="1.5 Litros (S/ 8.00)"> 1.5 Litros - S/ 8.00</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Inca Kola', 'opt_incakola')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN FANTA -->
+    <div class="cat-title">🟠 FANTA</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Fanta</span>
+            <span class="product-price">Desde S/ 2.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_fanta" value="Pirañita (S/ 2.00)" checked> Pirañita - S/ 2.00</label>
+            <label><input type="radio" name="opt_fanta" value="Personal (S/ 2.50)"> Personal - S/ 2.50</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Fanta', 'opt_fanta')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN PEPSI -->
+    <div class="cat-title">🔵 GASEOSA PEPSI</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Pepsi</span>
+            <span class="product-price">Desde S/ 1.50</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_pepsi" value="Chiquita (S/ 1.50)" checked> Chiquita - S/ 1.50</label>
+            <label><input type="radio" name="opt_pepsi" value="1 Litro (S/ 4.00)"> 1 Litro - S/ 4.00</label>
+            <label><input type="radio" name="opt_pepsi" value="3 Litros (S/ 9.00)"> 3 Litros - S/ 9.00</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Pepsi', 'opt_pepsi')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN OTRAS BEBIDAS Y REHIDRATANTES (TODO JUNTO) -->
+    <div class="cat-title">🥤 OTRAS BEBIDAS Y REHIDRATANTES</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Elige tu bebida</span>
+            <span class="product-price">Desde S/ 1.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Carlos Personal 600ml (S/ 1.00)" checked> Agua San Carlos 600ml - S/ 1.00</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Carlos Grande 725ml (S/ 1.50)"> Agua San Carlos Grande 725ml - S/ 1.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Luis Sin Gas 600ml (S/ 2.00)"> Agua San Luis Sin Gas 600ml - S/ 2.00</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Luis Con Gas 600ml (S/ 2.00)"> Agua San Luis Con Gas 600ml - S/ 2.00</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Cifrut Pequeño (S/ 1.50)"> Cifrut Pequeño - S/ 1.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Volt Energizante (S/ 2.50)"> Volt - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Sporade Rojo (S/ 2.50)"> Sporade Rojo - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Sporade Azul (S/ 2.50)"> Sporade Azul - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Gatorade Blanco (S/ 2.50)"> Gatorade Blanco - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Gatorade Rojo (S/ 2.50)"> Gatorade Rojo - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Gatorade Celeste (S/ 2.50)"> Gatorade Celeste - S/ 2.50</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Bebida', 'opt_otras_bebidas')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- BARRA FLOTANTE -->
+    <div class="cart-bar">
+        <div>
+            <div style="font-size: 0.75rem; color: var(--text-sub); font-weight: 600;">TOTAL A PAGAR:</div>
+            <div style="font-weight: 900; font-size: 1.3rem; color: var(--amber-glow);" id="totalPrecio">S/ 0.00</div>
+        </div>
+        <button class="btn-send" onclick="enviarWhatsAppDirecto()">PEDIR Y PAGAR 🚀</button>
     </div>
 
     <script>
@@ -345,10 +373,7 @@
 
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const mesaParam = urlParams.get('mesa');
-            if (mesaParam) {
-                numMesa = mesaParam;
-            }
+            numMesa = urlParams.get('mesa') || "1";
             document.getElementById('displayMesa').innerText = `MESA Nº ${numMesa}`;
         };
 
@@ -360,6 +385,16 @@
         function agregarOpcion(nombre, precio, radioName) {
             const opcion = document.querySelector(`input[name="${radioName}"]:checked`).value;
             carrito.push({ nombre, precio, detalle: opcion });
+            actualizarTotal();
+        }
+
+        function agregarBebidaCompleja(marca, radioName) {
+            const val = document.querySelector(`input[name="${radioName}"]:checked`).value;
+            const matchPrecio = val.match(/S\/\s*([\d\.]+)/);
+            const precio = matchPrecio ? parseFloat(matchPrecio[1]) : 0;
+            const detalle = val.replace(/\s*\(S\/\s*[\d\.]+\)/, '');
+
+            carrito.push({ nombre: marca === 'Bebida' ? detalle : marca, precio: precio, detalle: marca === 'Bebida' ? "" : detalle });
             actualizarTotal();
         }
 
@@ -383,7 +418,7 @@
 
             let total = 0;
             
-            // Códigos Unicode (\u) para garantizar que los emojis no se corrompan en WhatsApp
+            // Usamos formato Unicode para los emojis del mensaje de WhatsApp para que NUNCA salgan como '?'
             let lineas = [
                 "\u{1F525} *BROSTER\u{00CD}A EL PADRINO* \u{1F525}",
                 "━━━━━━━━━━━━━━━━━━━━━",
