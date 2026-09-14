@@ -83,6 +83,14 @@
             margin-bottom: 14px; 
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        .product-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
         }
         .product-header { display: flex; justify-content: space-between; align-items: center; }
         .product-title { font-size: 1.05rem; font-weight: 700; color: #fff; }
@@ -174,6 +182,7 @@
     <div class="cat-title">🍗 PIEZAS BROASTER</div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Pecho Broaster">
         <div class="product-header">
             <span class="product-title">Pecho Broaster</span>
             <span class="product-price">S/ 8.00</span>
@@ -182,10 +191,11 @@
             <label><input type="radio" name="opt_pecho" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
             <label><input type="radio" name="opt_pecho" value="Con Chaufa"> 🍚 Con Chaufa</label>
         </div>
-        <button class="btn-add" onclick="agregarBroaster('Pecho Broaster', 8.00, 'opt_pecho')">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarOpcion('Pecho Broaster', 8.00, 'opt_pecho')">+ AGREGAR AL PEDIDO</button>
     </div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Entrepierna Broaster">
         <div class="product-header">
             <span class="product-title">Entrepierna Broaster</span>
             <span class="product-price">S/ 8.00</span>
@@ -194,10 +204,11 @@
             <label><input type="radio" name="opt_entrepierna" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
             <label><input type="radio" name="opt_entrepierna" value="Con Chaufa"> 🍚 Con Chaufa</label>
         </div>
-        <button class="btn-add" onclick="agregarBroaster('Entrepierna Broaster', 8.00, 'opt_entrepierna')">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarOpcion('Entrepierna Broaster', 8.00, 'opt_entrepierna')">+ AGREGAR AL PEDIDO</button>
     </div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Alita Broaster">
         <div class="product-header">
             <span class="product-title">Alita Broaster</span>
             <span class="product-price">S/ 7.00</span>
@@ -206,24 +217,27 @@
             <label><input type="radio" name="opt_alita" value="Con Pura Papa" checked> 🍟 Con Pura Papa</label>
             <label><input type="radio" name="opt_alita" value="Con Chaufa"> 🍚 Con Chaufa</label>
         </div>
-        <button class="btn-add" onclick="agregarBroaster('Alita Broaster', 7.00, 'opt_alita')">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarOpcion('Alita Broaster', 7.00, 'opt_alita')">+ AGREGAR AL PEDIDO</button>
     </div>
 
     <!-- SECCIÓN SALCHIPAPAS -->
     <div class="cat-title">🍟 SALCHIPAPAS & DÚOS</div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchipapa Simple">
         <div class="product-header">
             <span class="product-title">Salchipapa Simple</span>
             <span class="product-price">S/ 5.00</span>
         </div>
         <div class="options-box">
-            <label><input type="checkbox" id="chk_simple_chaufa"> 🍚 Añadir Chaufa (+S/ 1.00 extra)</label>
+            <label><input type="radio" name="opt_salchisimple" value="Con Papa" checked> 🍟 Con Papa</label>
+            <label><input type="radio" name="opt_salchisimple" value="Con Chaufa"> 🍚 Con Chaufa</label>
         </div>
-        <button class="btn-add" onclick="agregarSimple()">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarOpcion('Salchipapa Simple', 5.00, 'opt_salchisimple')">+ AGREGAR AL PEDIDO</button>
     </div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchipapa Especial">
         <div class="product-header">
             <span class="product-title">Salchipapa Especial</span>
             <span class="product-price">S/ 8.00</span>
@@ -232,6 +246,7 @@
     </div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchichaufa">
         <div class="product-header">
             <span class="product-title">Salchichaufa</span>
             <span class="product-price">S/ 9.00</span>
@@ -240,6 +255,7 @@
     </div>
 
     <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Salchibroaster">
         <div class="product-header">
             <span class="product-title">Salchibroaster</span>
             <span class="product-price">S/ 12.00</span>
@@ -249,36 +265,96 @@
             <label><input type="radio" name="opt_salchibroaster" value="Pieza Entrepierna"> 🍗 Entrepierna</label>
             <label><input type="radio" name="opt_salchibroaster" value="Pieza Alita"> 🍗 Alita</label>
         </div>
-        <button class="btn-add" onclick="agregarBroaster('Salchibroaster', 12.00, 'opt_salchibroaster')">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarOpcion('Salchibroaster', 12.00, 'opt_salchibroaster')">+ AGREGAR AL PEDIDO</button>
     </div>
 
-    <!-- SECCIÓN GASEOSAS -->
-    <div class="cat-title">🥤 BEBIDAS</div>
+    <!-- SECCIÓN COCA COLA -->
+    <div class="cat-title">🔴 COCA COLA</div>
+
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=500&auto=format&fit=crop" class="product-img" alt="Coca Cola">
+        <div class="product-header">
+            <span class="product-title">Coca Cola</span>
+            <span class="product-price">Desde S/ 2.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_cocacola" value="Pirañita (S/ 2.00)" checked> Pirañita - S/ 2.00</label>
+            <label><input type="radio" name="opt_cocacola" value="Personal (S/ 3.50)"> Personal - S/ 3.50</label>
+            <label><input type="radio" name="opt_cocacola" value="1 Litro (S/ 6.00)"> 1 Litro - S/ 6.00</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Coca Cola', 'opt_cocacola')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN INCA KOLA -->
+    <div class="cat-title">🟡 INCA KOLA</div>
 
     <div class="product-card">
         <div class="product-header">
-            <span class="product-title">Gaseosa Personal 600ml</span>
-            <span class="product-price">S/ 3.50</span>
+            <span class="product-title">Inca Kola</span>
+            <span class="product-price">Desde S/ 3.50</span>
         </div>
         <div class="options-box">
-            <label><input type="radio" name="opt_gas_600" value="Coca Cola" checked> Coca Cola</label>
-            <label><input type="radio" name="opt_gas_600" value="Inka Kola"> Inka Kola</label>
+            <label><input type="radio" name="opt_incakola" value="Personal 600ml (S/ 3.50)" checked> Personal 600ml - S/ 3.50</label>
+            <label><input type="radio" name="opt_incakola" value="Gordita 625ml (S/ 4.00)"> Gordita 625ml - S/ 4.00</label>
+            <label><input type="radio" name="opt_incakola" value="1 Litro (S/ 6.00)"> 1 Litro - S/ 6.00</label>
+            <label><input type="radio" name="opt_incakola" value="1.5 Litros (S/ 8.00)"> 1.5 Litros - S/ 8.00</label>
         </div>
-        <button class="btn-add" onclick="agregarBroaster('Gaseosa 600ml', 3.50, 'opt_gas_600')">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Inca Kola', 'opt_incakola')">+ AGREGAR AL PEDIDO</button>
     </div>
+
+    <!-- SECCIÓN FANTA -->
+    <div class="cat-title">🟠 FANTA</div>
 
     <div class="product-card">
         <div class="product-header">
-            <span class="product-title">Gaseosa Pirañita</span>
-            <span class="product-price">S/ 1.50</span>
+            <span class="product-title">Fanta</span>
+            <span class="product-price">Desde S/ 2.00</span>
         </div>
         <div class="options-box">
-            <label><input type="radio" name="opt_piranita" value="Coca Cola" checked> Coca Cola</label>
-            <label><input type="radio" name="opt_piranita" value="Inka Kola"> Inka Kola</label>
-            <label><input type="radio" name="opt_piranita" value="Fanta"> Fanta</label>
-            <label><input type="radio" name="opt_piranita" value="Sprite"> Sprite</label>
+            <label><input type="radio" name="opt_fanta" value="Pirañita (S/ 2.00)" checked> Pirañita - S/ 2.00</label>
+            <label><input type="radio" name="opt_fanta" value="Personal (S/ 2.50)"> Personal - S/ 2.50</label>
         </div>
-        <button class="btn-add" onclick="agregarBroaster('Gaseosa Pirañita', 1.50, 'opt_piranita')">+ AGREGAR AL PEDIDO</button>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Fanta', 'opt_fanta')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN PEPSI -->
+    <div class="cat-title">🔵 GASEOSA PEPSI</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Pepsi</span>
+            <span class="product-price">Desde S/ 1.50</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_pepsi" value="Chiquita (S/ 1.50)" checked> Chiquita - S/ 1.50</label>
+            <label><input type="radio" name="opt_pepsi" value="1 Litro (S/ 4.00)"> 1 Litro - S/ 4.00</label>
+            <label><input type="radio" name="opt_pepsi" value="3 Litros (S/ 9.00)"> 3 Litros - S/ 9.00</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Pepsi', 'opt_pepsi')">+ AGREGAR AL PEDIDO</button>
+    </div>
+
+    <!-- SECCIÓN OTRAS BEBIDAS Y REHIDRATANTES (TODO JUNTO) -->
+    <div class="cat-title">🥤 OTRAS BEBIDAS Y REHIDRATANTES</div>
+
+    <div class="product-card">
+        <div class="product-header">
+            <span class="product-title">Elige tu bebida</span>
+            <span class="product-price">Desde S/ 1.00</span>
+        </div>
+        <div class="options-box">
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Carlos Personal 600ml (S/ 1.00)" checked> Agua San Carlos 600ml - S/ 1.00</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Carlos Grande 725ml (S/ 1.50)"> Agua San Carlos Grande 725ml - S/ 1.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Luis Sin Gas 600ml (S/ 2.00)"> Agua San Luis Sin Gas 600ml - S/ 2.00</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Agua San Luis Con Gas 600ml (S/ 2.00)"> Agua San Luis Con Gas 600ml - S/ 2.00</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Cifrut Pequeño (S/ 1.50)"> Cifrut Pequeño - S/ 1.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Volt Energizante (S/ 2.50)"> Volt - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Sporade Rojo (S/ 2.50)"> Sporade Rojo - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Sporade Azul (S/ 2.50)"> Sporade Azul - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Gatorade Blanco (S/ 2.50)"> Gatorade Blanco - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Gatorade Rojo (S/ 2.50)"> Gatorade Rojo - S/ 2.50</label>
+            <label><input type="radio" name="opt_otras_bebidas" value="Gatorade Celeste (S/ 2.50)"> Gatorade Celeste - S/ 2.50</label>
+        </div>
+        <button class="btn-add" onclick="agregarBebidaCompleja('Bebida', 'opt_otras_bebidas')">+ AGREGAR AL PEDIDO</button>
     </div>
 
     <!-- BARRA FLOTANTE -->
@@ -306,18 +382,19 @@
             actualizarTotal();
         }
 
-        function agregarBroaster(nombre, precio, radioName) {
+        function agregarOpcion(nombre, precio, radioName) {
             const opcion = document.querySelector(`input[name="${radioName}"]:checked`).value;
             carrito.push({ nombre, precio, detalle: opcion });
             actualizarTotal();
         }
 
-        function agregarSimple() {
-            const extraChaufa = document.getElementById('chk_simple_chaufa').checked;
-            let precioFinal = extraChaufa ? 6.00 : 5.00;
-            let detalle = extraChaufa ? "Con Extra Chaufa (+S/ 1.00)" : "Sin Chaufa";
+        function agregarBebidaCompleja(marca, radioName) {
+            const val = document.querySelector(`input[name="${radioName}"]:checked`).value;
+            const matchPrecio = val.match(/S\/\s*([\d\.]+)/);
+            const precio = matchPrecio ? parseFloat(matchPrecio[1]) : 0;
+            const detalle = val.replace(/\s*\(S\/\s*[\d\.]+\)/, '');
 
-            carrito.push({ nombre: "Salchipapa Simple", precio: precioFinal, detalle: detalle });
+            carrito.push({ nombre: marca === 'Bebida' ? detalle : marca, precio: precio, detalle: marca === 'Bebida' ? "" : detalle });
             actualizarTotal();
         }
 
@@ -340,27 +417,35 @@
             }
 
             let total = 0;
-            let msj = `🔥 *BROSTERÍA EL PADRINO* 🔥\n`;
-            msj += `━━━━━━━━━━━━━━━━━━━━━\n`;
-            msj += `📍 *UBICACIÓN:* MESA Nº ${numMesa}\n`;
-            msj += `👤 *CLIENTE:* ${nombre.toUpperCase()}\n`;
-            msj += `━━━━━━━━━━━━━━━━━━━━━\n\n`;
-            msj += `📋 *RESUMEN DE TU PEDIDO:*\n`;
+            
+            let lineas = [
+                "🔥 *BROSTERÍA EL PADRINO* 🔥",
+                "━━━━━━━━━━━━━━━━━━━━━",
+                "📍 *UBICACIÓN:* MESA Nº " + numMesa,
+                "👤 *CLIENTE:* " + nombre.toUpperCase(),
+                "━━━━━━━━━━━━━━━━━━━━━",
+                "",
+                "📋 *RESUMEN DE TU PEDIDO:*"
+            ];
 
             carrito.forEach((item, index) => {
-                let detalleTexto = item.detalle ? ` _(${item.detalle})_` : '';
-                msj += `*${index + 1}.* ${item.nombre}${detalleTexto}\n`;
-                msj += `   └─ 💰 *S/ ${item.precio.toFixed(2)}*\n`;
+                let detalleTexto = item.detalle ? " _(" + item.detalle + ")_" : "";
+                lineas.push("*" + (index + 1) + ".* " + item.nombre + detalleTexto);
+                lineas.push("   └─ 💰 *S/ " + item.precio.toFixed(2) + "*");
                 total += item.precio;
             });
 
-            msj += `\n━━━━━━━━━━━━━━━━━━━━━\n`;
-            msj += `💵 *TOTAL A PAGAR: S/ ${total.toFixed(2)}*\n`;
-            msj += `━━━━━━━━━━━━━━━━━━━━━\n\n`;
-            msj += `Por favor, envíame el QR de Yape/Plin a este chat para realizar el pago de S/ ${total.toFixed(2)} y confirmar mi pedido. ¡Gracias! 🙌`;
+            lineas.push("");
+            lineas.push("━━━━━━━━━━━━━━━━━━━━━");
+            lineas.push("💵 *TOTAL A PAGAR: S/ " + total.toFixed(2) + "*");
+            lineas.push("━━━━━━━━━━━━━━━━━━━━━");
+            lineas.push("");
+            lineas.push("Por favor, envíame el QR de Yape/Plin a este chat para realizar el pago de S/ " + total.toFixed(2) + " y confirmar mi pedido. ¡Gracias! 🙌");
 
-            const url = `https://wa.me/${MI_NUMERO_WHATSAPP}?text=${encodeURIComponent(msj)}`;
-            window.open(url, '_blank');
+            let mensajeCompleto = lineas.join("\n");
+            let urlWhatsApp = "https://wa.me/" + MI_NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensajeCompleto);
+
+            window.location.href = urlWhatsApp;
         }
     </script>
 </body>
